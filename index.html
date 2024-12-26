@@ -18,12 +18,36 @@
     </header>
     <!-- Ending  my header section  -->
     <!-- starting my main section  -->
-    <main>
+    <main class="container mx-auto pt-12">
       <section>
+        <section class="bg-[#100F0F0D] p-4 m-4">
+          <input
+            id="input_text"
+            type="text"
+            placeholder="Search Here"
+            class="input input-bordered w-full max-w-xs"
+          />
+          <button onclick="search_phone()" class="btn btn-warning">
+            Search
+          </button>
+          <input
+            id="input_text2"
+            type="text"
+            placeholder="Search Here"
+            class="input input-bordered w-full max-w-xs"
+          />
+          <button onclick="search_phone2()" class="btn btn-active btn-primary">
+            search
+          </button>
+        </section>
+
         <div
           id="phone_container"
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         ></div>
+        <button id="show_all" class="btn btn-active btn-accent hidden">
+          Show All
+        </button>
       </section>
     </main>
     <!-- Ending my main section  -->
