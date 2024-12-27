@@ -1,10 +1,11 @@
+// load the data 
 const phone_api=async(input_text)=>{
     const phone_fetch=await fetch(`https://openapi.programming-hero.com/api/phones?search=${input_text}`)
     const phone_json =await phone_fetch.json();
     const phone_data=phone_json.data
     phone_api_details(phone_data)
 }
-
+// show the data 
 const phone_api_details=(data_s)=>{
   // find the element 
     let find_item=document.getElementById('phone_container')
@@ -45,11 +46,14 @@ const phone_api_details=(data_s)=>{
         // append child 
         find_item.appendChild(crete_div)
     }
+    loading(false)
 
 
 }
 // search phone section 
 function search_phone(){
+  loading(true)
+  
   // find the id 
   const find_phone=document.getElementById('input_text')
   // find the man
@@ -60,10 +64,22 @@ function search_phone(){
 
 }
 // phone_api()
-
+// search phone section 2 
 function search_phone2(){
+  loading(true)
   const find_search_phone2=document.getElementById('input_text2')
   const find_search_phone2_man=find_search_phone2.value;
   phone_api(find_search_phone2_man)
+
+}
+function loading(is_loading){
+  const find_loading_bar=document.getElementById('spinear_section');
+  if(is_loading === true){
+    find_loading_bar.classList.remove('hidden')
+
+  }else if(is_loading === false){
+    find_loading_bar.classList.add('hidden')
+  }
+  
 
 }
