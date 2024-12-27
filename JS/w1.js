@@ -58,7 +58,7 @@ function search_phone(){
   const find_phone=document.getElementById('input_text')
   // find the man
   let input_Value=find_phone.value;
-  console.log(input_Value)
+  console.log("Search for fist input text",input_Value)
   // call function 
   phone_api(input_Value)
 
@@ -72,6 +72,7 @@ function search_phone2(){
   phone_api(find_search_phone2_man)
 
 }
+// this function is for loading section 
 function loading(is_loading){
   const find_loading_bar=document.getElementById('spinear_section');
   if(is_loading === true){
