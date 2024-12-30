@@ -1,24 +1,27 @@
 // load the data 
-const phone_api=async(input_text)=>{
+const phone_api=async(input_text,show_all)=>{
     const phone_fetch=await fetch(`https://openapi.programming-hero.com/api/phones?search=${input_text}`)
     const phone_json =await phone_fetch.json();
     const phone_data=phone_json.data
-    phone_api_details(phone_data)
+    phone_api_details(phone_data,show_all)
 }
 // show the data 
-const phone_api_details=(data_s)=>{
+const phone_api_details=(data_s,show_all)=>{
   // find the element 
     let find_item=document.getElementById('phone_container')
     find_item.innerHTML=''
     console.log(data_s.length)
     let find_button=document.getElementById('show_all')
-    if(data_s.length >12){
+    if(data_s.length >12 && !show_all){
       find_button.classList.remove('hidden')
-    }else if(data_s.length<12){
+    }else{
       find_button.classList.add('hidden')
     }
+    console.log('show the button',show_all)
     // limitation
-    data_s=data_s.slice(0,10)
+    if(!show_all){
+      data_s=data_s.slice(0,10)
+    }
     // run loop 
     for(let data of data_s){
         console.log(data)
@@ -51,7 +54,7 @@ const phone_api_details=(data_s)=>{
 
 }
 // search phone section 
-function search_phone(){
+function search_phone(show_all){
   loading(true)
   
   // find the id 
@@ -60,19 +63,19 @@ function search_phone(){
   let input_Value=find_phone.value;
   console.log("Search for fist input text",input_Value)
   // call function 
-  phone_api(input_Value)
+  phone_api(input_Value,show_all)
 
 }
 // phone_api()
 // search phone section 2 
-function search_phone2(){
-  loading(true)
-  const find_search_phone2=document.getElementById('input_text2')
-  const find_search_phone2_man=find_search_phone2.value;
-  phone_api(find_search_phone2_man)
+// function search_phone2(){
+//   loading(true)
+//   const find_search_phone2=document.getElementById('input_text2')
+//   const find_search_phone2_man=find_search_phone2.value;
+//   phone_api(find_search_phone2_man)
 
-}
-// this function is for loading section 
+// }
+// this function is for data_loading section 
 function loading(is_loading){
   const find_loading_bar=document.getElementById('spinear_section');
   if(is_loading === true){
@@ -81,6 +84,12 @@ function loading(is_loading){
   }else if(is_loading === false){
     find_loading_bar.classList.add('hidden')
   }
+  
+
+}
+
+function show_all(){
+  search_phone(true)
   
 
 }
