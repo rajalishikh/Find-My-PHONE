@@ -103,8 +103,16 @@ function show_phone_details(find_data){
       class="rounded-xl card bg-base-100  shadow-xl" />
   </figure>
   <div class="card-body">
-    <h2 class="card-title">${find_data.name}</h2>
-    <p>${find_data.mainFeatures?.storage}</p>
+    <h2 class="card-title"><span>Phone name </span>${find_data.name}</h2>
+    <p><span>Storage</span> ${find_data.mainFeatures?.storage}</p>
+    <p><span>Display Size</span> ${find_data.mainFeatures?.displaySize}</p>
+    <p><span>Chipset</span> ${find_data.mainFeatures?.chipSet}</p>
+    <p><span>Memory</span> ${find_data.mainFeatures?.storage}</p>
+    <p><span>Memory</span> ${find_data.mainFeatures?.storage}</p>
+    <p><span>slug</span> ${find_data.slug}</p>
+    <p><span>ReleaseDate</span> ${find_data.releaseDate}</p>
+    <p><span>Brand</span> ${find_data.brand}</p>
+    <p><span>Gps</span> ${find_data.others?.GPS || 'No Gps'}</p>
     
   </div>
 </div>
