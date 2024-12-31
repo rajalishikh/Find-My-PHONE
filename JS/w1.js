@@ -61,9 +61,22 @@ function search_phone(show_all){
   const find_phone=document.getElementById('input_text')
   // find the man
   let input_Value=find_phone.value;
-  console.log("Search for fist input text",input_Value)
+  
+  let lower=input_Value.toLowerCase()
+ let number=parseInt(input_Value)
+  console.log(typeof lower)
   // call function 
-  phone_api(input_Value,show_all)
+  if(lower === 'samsung' || lower === 'iphone'  || lower === 'watch' ){
+
+   phone_api(input_Value,show_all)
+  }else if(!isNaN(number)){
+
+    phone_api(input_Value,show_all)
+  }else {
+    alert('Please writing correct word')
+
+  }
+  
 
 }
 
@@ -123,7 +136,9 @@ function show_phone_details(find_data){
  my_modal_5.showModal()
  
 }
-
+function alert_function(){
+  alert('This button does not have any action assigned to it')
+}
 function show_all(){
   search_phone(true)
   
