@@ -44,7 +44,7 @@ const phone_api_details=(data_s,show_all)=>{
                 slug
                 }</p>
               <div class="card-actions">
-                <button class="btn btn-primary">Show Details</button>
+                <button onclick='show_details("${data.slug}")' class="btn btn-primary">Show Details</button>
         `
         // append child 
         find_item.appendChild(crete_div)
@@ -66,16 +66,7 @@ function search_phone(show_all){
   phone_api(input_Value,show_all)
 
 }
-// phone_api()
-// search phone section 2 
-// function search_phone2(){
-//   loading(true)
-//   const find_search_phone2=document.getElementById('input_text2')
-//   const find_search_phone2_man=find_search_phone2.value;
-//   phone_api(find_search_phone2_man)
 
-// }
-// this function is for data_loading section 
 function loading(is_loading){
   const find_loading_bar=document.getElementById('spinear_section');
   if(is_loading === true){
@@ -86,6 +77,43 @@ function loading(is_loading){
   }
   
 
+}
+// show details main part bring the data 
+
+const show_details = async(data_details)=>{
+  const find_data=await fetch(`https://openapi.programming-hero.com/api/phone/${data_details}`)
+  const translate_find_data=await find_data.json()
+  show_phone_details(translate_find_data.data)
+
+}
+
+// show details work show the phone details  
+
+function show_phone_details(find_data){
+  console.log(find_data)
+  
+ const find_id=document.getElementById('phone_details_show')
+ 
+ find_id.innerHTML=
+ `<div>
+  <figure class="px-10 pt-10">
+    <img
+      src="${find_data.image}"
+      alt="Shoes"
+      class="rounded-xl card bg-base-100  shadow-xl" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">${find_data.name}</h2>
+    <p>${find_data.mainFeatures?.storage}</p>
+    
+  </div>
+</div>
+
+ 
+ `
+ 
+ my_modal_5.showModal()
+ 
 }
 
 function show_all(){
